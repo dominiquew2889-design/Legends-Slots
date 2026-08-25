@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#09090b" />
+  <title>Lucky Legends Arcade V4</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-icon">🍀</span>
+      <div>
+        <strong>Lucky Legends</strong>
+        <small>Free-Coin Arcade</small>
+      </div>
+    </div>
+    <div class="wallet">🪙 <span id="coinBalance">1000</span></div>
+    <button id="accountBtn" class="iconBtn">👤</button>
+  </header>
+
+  <main class="wrap">
+    <section id="home" class="screen active">
+      <div class="hero">
+        <span>V4 FEATURE MACHINE UPGRADE</span>
+        <h1>Casino-style bonus machines, rebuilt for Lucky Legends.</h1>
+        <p>Virtual coins only. No purchases, cash-out, or real-money wagering.</p>
+      </div>
+
+      <h2>Featured Slots</h2>
+      <div class="gameGrid">
+        <button class="gameCard wolfCard" data-open-slot="wolf">
+          <div class="jackStrip"><span>MINI</span><span>MINOR</span><span>MAJOR</span><span>GRAND</span></div>
+          <div class="art">🐺 🐷 🏠</div>
+          <strong>Wolf & Piggy Fortune</strong>
+          <small>Build houses • Saw wheel • Wolf finale</small>
+        </button>
+
+        <button class="gameCard skyCard" data-open-slot="sky">
+          <div class="jackStrip"><span>MINI</span><span>MINOR</span><span>MAJOR</span><span>GRAND</span></div>
+          <div class="art">☁️ 🎡 💵</div>
+          <strong>Spin the Sky Wheel</strong>
+          <small>Scatter wheel • Inner multiplier • Money catch</small>
+        </button>
+
+        <button class="gameCard classicCard" data-open-slot="classic">
+          <div class="art">🍒 7️⃣ 💎</div>
+          <strong>Legendary 3-Reel</strong>
+          <small>Classic line wins</small>
+        </button>
+      </div>
+
+      <h2>Pull Tabs</h2>
+      <div class="pullGrid">
+        <button data-pull="lucky">🍀<b>Lucky Reveal</b></button>
+        <button data-pull="gold">💰<b>Gold Rush</b></button>
+        <button data-pull="party">🎈<b>Party Pop</b></button>
+      </div>
+
+      <div class="stats">
+        <div><small>PLAYS</small><b id="statPlays">0</b></div>
+        <div><small>TOTAL WON</small><b id="statWon">0</b></div>
+        <div><small>BIGGEST WIN</small><b id="statBiggest">0</b></div>
+      </div>
+    </section>
+
+    <section id="slot" class="screen">
+      <button class="back">← Casino Floor</button>
+
+      <div id="slotCabinet" class="slotCabinet">
+        <div class="jackpots">
+          <div><small>GRAND</small><b id="jpGrand">5000</b></div>
+          <div><small>MAJOR</small><b id="jpMajor">1000</b></div>
+          <div><small>MINOR</small><b id="jpMinor">100</b></div>
+          <div><small>MINI</small><b id="jpMini">20</b></div>
+        </div>
+
+        <div class="titleArea">
+          <h1 id="slotTitle">Wolf & Piggy Fortune</h1>
+          <p id="slotSubtitle">Build houses and trigger the saw wheel.</p>
+        </div>
+
+        <div id="skyFeatureArea" class="skyFeature hidden">
+          <div class="wheelPointer">▼</div>
+          <div id="outerWheel" class="outerWheel">
+            <span class="w1">200</span><span class="w2">MINI</span><span class="w3">500</span><span class="w4">MAJOR</span>
+            <span class="w5">1000</span><span class="w6">BONUS</span><span class="w7">250</span><span class="w8">MINOR</span>
+            <div class="wheelHub">SKY<br>WHEEL</div>
+          </div>
+          <div id="innerWheelWrap" class="innerWrap hidden">
+            <div class="innerPointer">▼</div>
+            <div id="innerWheel" class="innerWheel">
+              <span>2×</span><span>3×</span><span>RESPIN</span><span>4×</span><span>5×</span><span>2×</span>
+            </div>
+          </div>
+          <div id="skyFeatureText" class="featureText">Wheel symbols on reels 1, 3 and 5 can trigger the bonus.</div>
+        </div>
+
+        <div id="wolfProgress" class="wolfProgress hidden">
+          <div class="houseMeter"><span>House 1</span><b id="house1">0/3</b></div>
+          <div class="houseMeter"><span>House 2</span><b id="house2">0/3</b></div>
+          <div class="houseMeter"><span>House 3</span><b id="house3">0/3</b></div>
+        </div>
+
+        <div id="reels" class="reels"></div>
+
+        <div id="featurePanel" class="featurePanel hidden"></div>
+
+        <div id="slotMessage" class="message">READY TO SPIN</div>
+
+        <div class="meters">
+          <div><small>BALANCE</small><b id="machineBalance">1000</b></div>
+          <div><small>WIN</small><b id="winMeter">0</b></div>
+          <div><small>BET</small><b id="betMeter">10</b></div>
+        </div>
+
+        <div class="controls">
+          <button id="betDown">−</button>
+          <button id="spinBtn" class="spinBtn">SPIN<small id="spinCost">10 COINS</small></button>
+          <button id="betUp">+</button>
+        </div>
+
+        <button id="rulesBtn" class="rulesBtn">Game Rules</button>
+      </div>
+    </section>
+
+    <section id="pull" class="screen">
+      <button class="back">← Casino Floor</button>
+      <div class="pullMachine">
+        <h1 id="pullTitle">Lucky Reveal</h1>
+        <p id="pullDesc"></p>
+        <div id="ticketGrid" class="ticketGrid"></div>
+        <div id="ticketResult" class="message">BUY A TICKET TO PLAY</div>
+        <button id="buyTicketBtn" class="spinBtn">BUY & REVEAL<small id="ticketCost">20 COINS</small></button>
+        <div id="pullRules" class="pullRules"></div>
+      </div>
+    </section>
+
+    <section id="admin" class="screen">
+      <button class="back">← Casino Floor</button>
+      <div class="adminBox">
+        <h1>🛡️ Owner Admin Center</h1>
+        <input id="playerSearch" placeholder="Search name or email" />
+        <button id="refreshPlayers">Refresh Players</button>
+        <div id="playerList"></div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="nav">
+    <button data-nav="home">🏠<small>Lobby</small></button>
+    <button data-nav="slot">🎰<small>Slots</small></button>
+    <button data-nav="pull">🎟️<small>Pull Tabs</small></button>
+    <button id="adminNav" class="hidden" data-nav="admin">🛡️<small>Admin</small></button>
+  </nav>
+
+  <div id="accountModal" class="modal hidden">
+    <div class="modalBox">
+      <button class="closeBtn" data-close="account">×</button>
+      <div id="signedOutView">
+        <h2>Player Account</h2>
+        <input id="loginEmail" type="email" placeholder="Email" />
+        <input id="loginPassword" type="password" placeholder="Password" />
+        <button id="signInBtn">Sign In</button>
+        <hr>
+        <input id="signupName" placeholder="Display name" />
+        <input id="signupEmail" type="email" placeholder="Email" />
+        <input id="signupPassword" type="password" placeholder="Password (6+)" />
+        <button id="signUpBtn">Create Account</button>
+        <p id="authMsg"></p>
+      </div>
+      <div id="signedInView" class="hidden">
+        <h2 id="profileName">Player</h2>
+        <p id="profileEmail"></p>
+        <button id="signOutBtn">Sign Out</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="rulesModal" class="modal hidden">
+    <div class="modalBox">
+      <button class="closeBtn" data-close="rules">×</button>
+      <h2 id="rulesTitle">Game Rules</h2>
+      <div id="rulesBody"></div>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
