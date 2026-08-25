@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#07180d" />
+  <title>Lucky Legends Arcade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">🍀</div>
+      <div>
+        <div class="eyebrow">FREE-TO-PLAY SOCIAL ARCADE</div>
+        <h1>Lucky Legends</h1>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <div class="balance-pill" title="Virtual coins have no cash value">
+        <span>🪙</span>
+        <strong id="coinBalance">1,000</strong>
+      </div>
+      <button id="accountBtn" class="icon-btn" aria-label="Account">👤</button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section id="homeScreen" class="screen active">
+      <div class="hero-card glass">
+        <div class="hero-copy">
+          <span class="tag">LUCKY LEGENDS ARCADE V2</span>
+          <h2>More machines. More bonuses. More ways to play.</h2>
+          <p>Choose from four original slot games and three pull-tab games. Everything uses free virtual coins only.</p>
+        </div>
+        <div class="hero-coins">🎰✨🎟️</div>
+      </div>
+
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">SLOT FLOOR</span>
+          <h3>Slot Games</h3>
+        </div>
+      </div>
+
+      <div class="game-grid">
+        <button class="game-card slot-card" data-slot="classic">
+          <div class="game-art">
+            <div class="mini-reels"><span>7️⃣</span><span>🍀</span><span>💎</span></div>
+          </div>
+          <div class="game-copy"><span class="game-kicker">3 REEL CLASSIC</span><strong>Legendary 3-Reel</strong><small>Classic line wins • Big multipliers</small></div>
+          <div class="play-arrow">→</div>
+        </button>
+
+        <button class="game-card slot-card wolf-card" data-slot="wolfpig">
+          <div class="game-art wolf-art">
+            <div class="feature-badge">🐺 VS 🐷</div>
+          </div>
+          <div class="game-copy"><span class="game-kicker">5 REEL FEATURE SLOT</span><strong>Wolf & Piggy Fortune</strong><small>Wild wolves • Piggy bank bonuses</small></div>
+          <div class="play-arrow">→</div>
+        </button>
+
+        <button class="game-card slot-card sky-card" data-slot="skywheel">
+          <div class="game-art sky-art">
+            <div class="wheel-mini">☁️<span>🎡</span>⭐</div>
+          </div>
+          <div class="game-copy"><span class="game-kicker">WHEEL BONUS SLOT</span><strong>Spin the Sky Wheel</strong><small>Land 3 clouds to spin the bonus wheel</small></div>
+          <div class="play-arrow">→</div>
+        </button>
+
+        <button class="game-card slot-card neon-card" data-slot="neon">
+          <div class="game-art neon-art">
+            <div class="feature-badge">🌙 ⚡ 💎</div>
+          </div>
+          <div class="game-copy"><span class="game-kicker">CASCADE SLOT</span><strong>Neon Nights</strong><small>Wins tumble • Chance to re-hit</small></div>
+          <div class="play-arrow">→</div>
+        </button>
+      </div>
+
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">PULL TAB BAR</span>
+          <h3>Pull Tab Games</h3>
+        </div>
+      </div>
+
+      <div class="game-grid">
+        <button class="game-card pull-card" data-pull="lucky">
+          <div class="game-art pull-art"><span class="ticket">LUCKY<br>REVEAL</span></div>
+          <div class="game-copy"><span class="game-kicker">MATCH GAME</span><strong>Lucky Reveal</strong><small>Match 3–6 symbols</small></div>
+          <div class="play-arrow">→</div>
+        </button>
+
+        <button class="game-card pull-card gold-card" data-pull="goldrush">
+          <div class="game-art gold-art"><span class="ticket">GOLD<br>RUSH</span></div>
+          <div class="game-copy"><span class="game-kicker">FIND THE NUGGETS</span><strong>Gold Rush Tabs</strong><small>Reveal nuggets and instant prizes</small></div>
+          <div class="play-arrow">→</div>
+        </button>
+
+        <button class="game-card pull-card party-card" data-pull="party">
+          <div class="game-art party-art"><span class="ticket">PARTY<br>POP</span></div>
+          <div class="game-copy"><span class="game-kicker">PARTY TICKET</span><strong>Party Pop Tabs</strong><small>Match balloons • Jackpot pop bonus</small></div>
+          <div class="play-arrow">→</div>
+        </button>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat glass"><span>Total Plays</span><strong id="statPlays">0</strong></div>
+        <div class="stat glass"><span>Total Won</span><strong id="statWon">0</strong></div>
+        <div class="stat glass"><span>Biggest Win</span><strong id="statBiggest">0</strong></div>
+      </div>
+
+      <div class="notice">
+        <span>ℹ️</span>
+        <p>Free entertainment only. Coins cannot be bought, sold, redeemed, or cashed out.</p>
+      </div>
+    </section>
+
+    <section id="slotsScreen" class="screen">
+      <button class="back-btn" data-back>← Arcade</button>
+
+      <div class="slot-title-strip">
+        <span id="slotThemeIcon">🎰</span>
+        <div>
+          <span class="eyebrow" id="slotModeLabel">CLASSIC SLOT</span>
+          <h2 id="slotTitle">Legendary 3-Reel</h2>
+          <small id="slotSubtitle">Classic line wins</small>
+        </div>
+      </div>
+
+      <div class="machine-wrap" id="machineWrap">
+        <div class="machine-top">
+          <span class="machine-light"></span>
+          <h2 id="machineTitle">LEGENDARY 3-REEL</h2>
+          <span class="machine-light"></span>
+        </div>
+
+        <div class="jackpot-strip">
+          <span id="topPrizeLabel">TOP PRIZE</span>
+          <strong id="topPrizeValue">5,000 COINS</strong>
+        </div>
+
+        <div class="reel-window" id="reelWindow">
+          <div class="payline"></div>
+        </div>
+
+        <div class="bonus-panel hidden" id="bonusPanel">
+          <div class="bonus-panel-title" id="bonusPanelTitle">BONUS FEATURE</div>
+          <div id="bonusPanelBody"></div>
+        </div>
+
+        <div class="win-banner" id="slotMessage">Choose a bet and spin!</div>
+
+        <div class="bet-controls">
+          <span>BET</span>
+          <div class="bet-group">
+            <button class="bet-btn active" data-bet="10">10</button>
+            <button class="bet-btn" data-bet="25">25</button>
+            <button class="bet-btn" data-bet="50">50</button>
+          </div>
+        </div>
+
+        <button id="spinBtn" class="primary-btn spin-btn">
+          <span>SPIN</span>
+          <small id="spinCost">10 COINS</small>
+        </button>
+
+        <button id="paytableBtn" class="text-btn">View game rules</button>
+      </div>
+    </section>
+
+    <section id="pulltabsScreen" class="screen">
+      <button class="back-btn" data-back>← Arcade</button>
+      <div class="pull-shell">
+        <div class="pull-header">
+          <span class="tag" id="pullTag">LUCKY REVEAL</span>
+          <h2 id="pullTitle">Pull Tab Tickets</h2>
+          <p id="pullDescription">Buy a ticket and reveal all six windows.</p>
+        </div>
+
+        <div class="ticket-board" id="ticketBoard">
+          <div class="ticket-top">
+            <span id="ticketBrand">🍀 LUCKY LEGENDS 🍀</span>
+            <strong id="ticketGameName">PULL TAB</strong>
+          </div>
+          <div class="ticket-grid" id="ticketGrid"></div>
+          <div class="ticket-result" id="ticketResult">Buy a ticket to play.</div>
+        </div>
+
+        <button id="buyTicketBtn" class="primary-btn">
+          <span>BUY & REVEAL</span>
+          <small id="ticketCostLabel">20 COINS</small>
+        </button>
+
+        <div class="prize-key glass" id="pullPrizeKey"></div>
+      </div>
+    </section>
+
+    <section id="adminScreen" class="screen">
+      <button class="back-btn" data-back>← Arcade</button>
+      <div class="admin-shell">
+        <div class="admin-title">
+          <span class="tag admin-tag">OWNER ACCESS</span>
+          <h2>Admin Center</h2>
+          <p>Search player accounts and adjust virtual coin balances.</p>
+        </div>
+        <div class="admin-summary">
+          <div class="stat glass"><span>Players Loaded</span><strong id="adminPlayerCount">0</strong></div>
+          <div class="stat glass"><span>Your Status</span><strong>ADMIN</strong></div>
+        </div>
+        <div class="admin-tools glass">
+          <label for="playerSearch">Find a player</label>
+          <input id="playerSearch" type="search" placeholder="Search display name or email" autocomplete="off" />
+          <button id="refreshPlayersBtn" class="secondary-btn">Refresh Players</button>
+        </div>
+        <div id="playerList" class="player-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <button class="nav-btn active" data-nav="home"><span>🏠</span><small>Arcade</small></button>
+    <button class="nav-btn" data-nav="slots"><span>🎰</span><small>Slots</small></button>
+    <button class="nav-btn" data-nav="pulltabs"><span>🎟️</span><small>Pull Tabs</small></button>
+    <button id="adminNavBtn" class="nav-btn hidden" data-nav="admin"><span>🛡️</span><small>Admin</small></button>
+  </nav>
+
+  <div id="accountModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="modal-close" data-close-modal>×</button>
+      <div id="signedOutView">
+        <span class="tag">PLAYER ACCOUNT</span>
+        <h2>Sign in to sync your coins</h2>
+        <p class="muted">You can also keep playing in Guest Mode on this device.</p>
+
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-auth-tab="signin">Sign In</button>
+          <button class="auth-tab" data-auth-tab="signup">Create Account</button>
+        </div>
+
+        <form id="signInForm" class="auth-form">
+          <input id="signInEmail" type="email" placeholder="Email" required />
+          <input id="signInPassword" type="password" placeholder="Password" minlength="6" required />
+          <button class="primary-btn" type="submit">SIGN IN</button>
+        </form>
+
+        <form id="signUpForm" class="auth-form hidden">
+          <input id="signUpName" type="text" placeholder="Display name" maxlength="24" required />
+          <input id="signUpEmail" type="email" placeholder="Email" required />
+          <input id="signUpPassword" type="password" placeholder="Password (6+ characters)" minlength="6" required />
+          <button class="primary-btn" type="submit">CREATE ACCOUNT</button>
+        </form>
+
+        <button id="guestBtn" class="secondary-btn wide">Continue as Guest</button>
+        <p id="authMessage" class="form-message"></p>
+      </div>
+
+      <div id="signedInView" class="hidden">
+        <span class="tag">ACCOUNT</span>
+        <h2 id="profileName">Player</h2>
+        <p id="profileEmail" class="muted"></p>
+        <div class="profile-balance">
+          <span>Virtual Balance</span>
+          <strong>🪙 <span id="profileCoins">0</span></strong>
+        </div>
+        <button id="openAdminBtn" class="primary-btn hidden">OPEN ADMIN CENTER</button>
+        <button id="signOutBtn" class="secondary-btn wide">Sign Out</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="paytableModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="modal-close" data-close-paytable>×</button>
+      <span class="tag">GAME RULES</span>
+      <h2 id="rulesTitle">Game Rules</h2>
+      <div class="paytable" id="rulesBody"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
